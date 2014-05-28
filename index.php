@@ -138,6 +138,7 @@
     
     <div class="pull-right text-muted">
         <p>Powered by TfL Open Data</p>
+        <p>&copy; <?php echo date("Y"); ?> Journey Checker | All Rights Reserved</p>
     </div>
     
     </div>
