@@ -137,8 +137,7 @@
     </div>
     
     <div class="pull-right text-muted">
-        <p>Powered by TfL Open Data</p>
-        <p>&copy; <?php echo date("Y"); ?> Journey Checker | All Rights Reserved</p>
+        <p class="text-right">&copy; <?php echo date("Y"); ?> Journey Checker | All Rights Reserved | Powered by TfL Open Data</p>
     </div>
     
     </div>
