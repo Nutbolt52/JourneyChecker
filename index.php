@@ -59,10 +59,9 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/ICO" href="favicon.ico">
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
-        <!-- Bootstrap theme -->
-        <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
         <title>Journey Checker</title>
         
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -71,7 +70,7 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body style="padding-top:40px">
+    <body style="padding-top:50px">
         
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -82,7 +81,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Journey Checker</a>
+            <div class="navbar-form" style="margin-top:0px; margin-bottom: 3.5px; padding-left:0px; padding-right:0px"><a class="navbar-left" href="index.php"><img src="img/icon_orange.png" style="height:45px; padding:5px" alt="Journey Checker"></a>
+                <a class="navbar-brand" href="index.php"> Journey Checker</a></div>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
