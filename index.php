@@ -56,10 +56,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/ICO" href="favicon.ico">
+        <meta name="description" content="Quickly and easily see if theres any delays on your underground line(s) during your commute in London. Works great on both desktop and mobile!" />
+        <meta name="Keywords" content="Journey, Checker, commute, London, TfL, transport for london, underground, delay, disruption" />
+        <link rel="image_src" href="img/logo_orange.png" />
+        <link rel="image_src" href="img/icon_orange.png" />
+        
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
         <title>Journey Checker</title>
