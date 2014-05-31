@@ -64,6 +64,7 @@
         <meta name="Keywords" content="Journey, Checker, commute, London, TfL, transport for london, underground, delay, disruption" />
         <link rel="image_src" href="img/logo_orange.png" />
         <link rel="image_src" href="img/icon_orange.png" />
+        <link rel="canonical" href="http://www.journeychecker.com/">
         
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
@@ -86,15 +87,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <div class="navbar-form" style="margin-top:0px; margin-bottom: 3.5px; padding-left:0px; padding-right:0px"><a class="navbar-left" href="index.php"><img src="img/icon_orange.png" style="height:45px; padding:5px" alt="Journey Checker"></a>
-                <a class="navbar-brand" href="index.php"> Journey Checker</a></div>
+            <div class="navbar-form" style="margin-top:0px; margin-bottom: 3.5px; padding-left:0px; padding-right:0px"><a class="navbar-left" href="/"><img src="img/icon_orange.png" style="height:45px; padding:5px" alt="Journey Checker"></a>
+                <a class="navbar-brand" href="/"> Journey Checker</a></div>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="preferences.php">Preferences</a></li>
-            <!--<li><a href="tube-map.php">Tube Map</a></li>-->
-            <li><a href="about.php">About</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="preferences">Preferences</a></li>
+            <!--<li><a href="tube-map">Tube Map</a></li>-->
+            <li><a href="about">About</a></li>
           </ul>
           <p class="navbar-text navbar-right">Updated at <?php PRINT date('H:i:s', filemtime($tflcache)) . " (" . date('T') . ")" ?></p>
         </div><!--/.nav-collapse -->
@@ -112,7 +113,7 @@
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <p><strong>Welcome to Journey Checker!</strong> Set your preferences to limit which lines you see below</p>
                 <h5>This website uses cookies to remember your preferences. By setting your preferences you are agreeing to allow this site to store cookies on your computer</h5>
-                <p><a class="btn btn-default" href="preferences.php">Set Preferences</a></p>
+                <p><a class="btn btn-default" href="preferences">Set Preferences</a></p>
             </div>
         </div>
         <?php } ?>
