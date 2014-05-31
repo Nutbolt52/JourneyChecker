@@ -1,7 +1,7 @@
 <?php
    ini_set('session.cookie_httponly',1);
    
-   $url= "http://cloud.tfl.gov.uk/TrackerNet/LineStatus";
+   $tfl_url= "http://cloud.tfl.gov.uk/TrackerNet/LineStatus";
    $lines = array();
    $linescookie = array();
    $tflcache = 'tflcache.xml.cache';
@@ -15,7 +15,7 @@
    }
 
    if(!file_exists($tflcache) || time() - filemtime($tflcache) > $tflcacheage) {
-        $contents = file_get_contents($url);
+        $contents = file_get_contents($tfl_url);
         file_put_contents($tflcache, $contents);
         $xml = simplexml_load_file($tflcache);
         clearstatcache(); 
@@ -142,12 +142,6 @@
     <strong>Note: </strong>If there is a disruption the affected lines will turn red and details of the disruption will be provided</p>
     </div>
     
-    <div class="pull-right text-muted">
-        <p class="text-right">&copy; <?php echo date("Y"); ?> Journey Checker | All Rights Reserved | Powered by TfL Open Data</p>
-    </div>
-    
-    </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-    </body>
-</html>
+<?php
+    include 'inc/footer.html'
+?>

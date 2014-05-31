@@ -122,8 +122,6 @@ and open the template in the editor.
             <p>To delete cookies saved on your computer click this handy button <a class="btn btn-xs btn-danger" href="?delete">Delete Preferences</a> </p>
         </div>
         
-    </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-    </body>
-</html>
+<?php
+    include 'inc/footer.html'
+?>
