@@ -1,5 +1,10 @@
 <?php
+   define('IN_APP', true);
+   require_once('inc/functions.php');
+   require_once('inc/menu.php');
+   
    ini_set('session.cookie_httponly',1);
+   $activepage='home';
    
    $tfl_url= "http://cloud.tfl.gov.uk/TrackerNet/LineStatus";
    $lines = array();
@@ -78,29 +83,10 @@
     </head>
     <body style="padding-top:50px">
         
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <div class="navbar-form" style="margin-top:0px; margin-bottom: 3.5px; padding-left:0px; padding-right:0px"><a class="navbar-left" href="/"><img src="img/icon_orange.png" style="height:45px; padding:5px" alt="Journey Checker"></a>
-                <a class="navbar-brand" href="/"> Journey Checker</a></div>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="preferences">Preferences</a></li>
-            <!--<li><a href="tube-map">Tube Map</a></li>-->
-            <li><a href="about">About</a></li>
-          </ul>
-          <p class="navbar-text navbar-right">Updated at <?php PRINT date('H:i:s', filemtime($tflcache)) . " (" . date('T') . ")" ?></p>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+    <?php
+        $navbar = jgetmenu($activepage);
+        print $navbar;
+    ?>
         
     <div class="container theme-showcase" role="main">   
      

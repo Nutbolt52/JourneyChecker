@@ -1,5 +1,11 @@
 <?php
+    define('IN_APP', true);
+    require_once('inc/functions.php');
+    require_once('inc/menu.php');
+    
     ini_set('session.cookie_httponly',1);
+    $activepage='pref';
+    
     $url= "http://cloud.tfl.gov.uk/TrackerNet/LineStatus";
     $expire=time()+60*60*24*30;
     $tflcache = 'tflcache.xml.cache';
@@ -39,13 +45,18 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/ICO" href="favicon.ico">
+        <meta name="description" content="Quickly and easily see if theres any delays on your underground line(s) during your commute in London. Works great on both desktop and mobile!" />
+        <meta name="Keywords" content="Journey, Checker, commute, London, TfL, transport for london, underground, delay, disruption" />
+        <link rel="image_src" href="img/logo_orange.png" />
+        <link rel="image_src" href="img/icon_orange.png" />
+        <link rel="canonical" href="http://www.journeychecker.com/preferences">
+        
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
-        <!-- Bootstrap theme -->
-        <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
         <title>Journey Checker - Preferences</title>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -56,28 +67,10 @@ and open the template in the editor.
     </head>
     <body style="padding-top:40px">
         
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php">Journey Checker</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="index.php">Home</a></li>
-            <li class="active"><a href="#preferences">Preferences</a></li>
-            <!--<li><a href="tube-map.php">Tube Map</a></li>-->
-            <li><a href="about.php">About</a></li>
-          </ul>
-           <p class="navbar-text navbar-right">Updated at <?php PRINT date('H:i:s', filemtime($tflcache)) . " (" . date('T') . ")" ?></p>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+    <?php
+        $navbar = jgetmenu($activepage);
+        print $navbar;
+    ?>
         
     <div class="container theme-showcase" role="main">   
         

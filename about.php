@@ -1,5 +1,9 @@
 <?php 
-    $tflcache = 'tflcache.xml.cache'; 
+    define('IN_APP', true);
+    require_once('inc/functions.php');
+    require_once('inc/menu.php');
+    
+    $activepage='about'; 
 ?>
 
 <!DOCTYPE html>
@@ -27,28 +31,10 @@ and open the template in the editor.
     </head>
     <body style="padding-top:40px">
         
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php">Journey Checker</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="preferences.php">Preferences</a></li>
-            <!--<li><a href="tube-map.php">Tube Map</a></li>-->
-            <li class="active"><a href="#about">About</a></li>
-          </ul>
-           <p class="navbar-text navbar-right">Updated at <?php PRINT date('H:i:s', filemtime($tflcache)) . " (" . date('T') . ")" ?></p>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+    <?php
+        $navbar = jgetmenu($activepage);
+        print $navbar;
+    ?>
         
     <div class="container theme-showcase" role="main">   
         
