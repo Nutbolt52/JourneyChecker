@@ -71,7 +71,8 @@
         <link rel="image_src" href="img/icon_orange.png" />
         <link rel="canonical" href="http://www.journeychecker.com/">
         
-        <!-- Bootstrap core CSS -->
+        <!-- Bootstrap CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
         <title>Journey Checker</title>
         

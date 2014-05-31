@@ -7,20 +7,21 @@
 ?>
 
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Bootstrap core CSS -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/ICO" href="favicon.ico">
+        <meta name="description" content="Quickly and easily see if theres any delays on your underground line(s) during your commute in London. Works great on both desktop and mobile!" />
+        <meta name="Keywords" content="Journey, Checker, commute, London, TfL, transport for london, underground, delay, disruption" />
+        <link rel="image_src" href="img/logo_orange.png" />
+        <link rel="image_src" href="img/icon_orange.png" />
+        <link rel="canonical" href="http://www.journeychecker.com/about">
+        
+        <!-- Bootstrap CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
-        <!-- Bootstrap theme -->
-        <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
         <title>Journey Checker - About</title>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

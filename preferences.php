@@ -38,11 +38,6 @@
 ?>
 
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -55,7 +50,8 @@ and open the template in the editor.
         <link rel="image_src" href="img/icon_orange.png" />
         <link rel="canonical" href="http://www.journeychecker.com/preferences">
         
-        <!-- Bootstrap core CSS -->
+        <!-- Bootstrap CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
         <title>Journey Checker - Preferences</title>
 
