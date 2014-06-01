@@ -2,17 +2,17 @@
     define('IN_APP', true);
     require_once('inc/functions.php');
     require_once('inc/menu.php');
+    session_start();
     
     ini_set('session.cookie_httponly',1);
     $activepage='pref';
     
-    $url= "http://cloud.tfl.gov.uk/TrackerNet/LineStatus";
     $expire=time()+60*60*24*30;
-    $tflcache = 'tflcache.xml.cache';
-    $tflcacheage = 30; //in second
 
     if(isset($_GET['delete'])) {
         setcookie('tubelines', null, -1, '/');
+        session_unset();
+        session_destroy();
         header('Location: index.php');
         exit;
     }
@@ -25,13 +25,13 @@
         exit;
     }
     
-       if(!file_exists($tflcache) || time() - filemtime($tflcache) > $tflcacheage) {
-        $contents = file_get_contents($url);
-        file_put_contents($tflcache, $contents);
-        $xml = simplexml_load_file($tflcache);
+       if(!file_exists(TFLCACHE) || time() - filemtime(TFLCACHE) > TFLCACHEAGE) {
+        $contents = file_get_contents(TFL_URL);
+        file_put_contents(TFLCACHE, $contents);
+        $xml = simplexml_load_file(TFLCACHE);
         clearstatcache(); 
     } else {
-        $xml = simplexml_load_file($tflcache);
+        $xml = simplexml_load_file(TFLCACHE);
     }
 
     

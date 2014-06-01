@@ -2,36 +2,28 @@
    define('IN_APP', true);
    require_once('inc/functions.php');
    require_once('inc/menu.php');
+   session_start();
    
    ini_set('session.cookie_httponly',1);
    $activepage='home';
    
-   $tfl_url= "http://cloud.tfl.gov.uk/TrackerNet/LineStatus";
    $lines = array();
-   $linescookie = array();
-   $tflcache = 'tflcache.xml.cache';
-   $tflcacheage = 30; //in seconds
    
-   if (isset($_COOKIE['tubelines'])) {
-       $linescookie = explode(',', filter_input(INPUT_COOKIE, 'tubelines', FILTER_SANITIZE_STRING));
-       $cookieset = true;
-   } else {
-       $cookieset = false;
-   }
-
-   if(!file_exists($tflcache) || time() - filemtime($tflcache) > $tflcacheage) {
-        $contents = file_get_contents($tfl_url);
-        file_put_contents($tflcache, $contents);
-        $xml = simplexml_load_file($tflcache);
+   jcheckfortflcookie();   
+   
+   if(!file_exists(TFLCACHE) || time() - filemtime(TFLCACHE) > TFLCACHEAGE) {
+        $contents = file_get_contents(TFL_URL);
+        file_put_contents(TFLCACHE, $contents);
+        $xml = simplexml_load_file(TFLCACHE);
         clearstatcache(); 
     } else {
-        $xml = simplexml_load_file($tflcache);
+        $xml = simplexml_load_file(TFLCACHE);
     }
 
-    if ($cookieset) {
+    if ($_SESSION['tflcookieset']) {
     if ($xml->LineStatus && $xml->LineStatus->Line){
         foreach ($xml->LineStatus as $row){
-            if(in_array($row->Line['Name'], $linescookie)){
+            if(in_array($row->Line['Name'], $_SESSION['tfl_lines'])){
                 $lines[(int)$row->Line['ID']] = array(
                 'id' => (int)$row->Line['ID'],
                 'name' => (string)$row->Line['Name'],
@@ -93,7 +85,7 @@
      
     <div class="jumbotron">
         <?php 
-        if ($cookieset == FALSE){
+        if ($_SESSION['tflcookieset'] == FALSE){
         ?>
         <div>
             <div class="alert alert-warning fade in">

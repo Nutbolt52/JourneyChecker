@@ -2,19 +2,17 @@
   defined('IN_APP') || die("Hands off!");
   require_once('config.php');
   require_once('inc/menu.php');
-
   
-  //Have <head> unqiue for each page, but have the navbar be a function
-  //*********
-  //Use this to create a header for pages
-//  function jgetheader($body, $title, $activepage){
-//    $page = file_get_contents('inc/header.html');
-//    $header = jgetmenu($activepage);
-//    $page = str_replace('%BODY%', $body, $page);
-//    $page = str_replace('%TITLE%', $title, $page);
-//    $page = str_replace('%HEADER%', $header , $page);
-//    return $page;
-//  }
+    //Check if the TfL Cookie is set and if so put the chosen tube lines in the users session
+    function jcheckfortflcookie () {
+        if (isset($_COOKIE['tubelines'])) {
+            $_SESSION['tfl_lines'] = explode(',', filter_input(INPUT_COOKIE, 'tubelines', FILTER_SANITIZE_STRING));
+            $_SESSION['tflcookieset'] = true;
+        } else {
+            $_SESSION['tflcookieset'] = false;
+        }
+    }
+  
 
   
   //Need the following functions:

@@ -22,7 +22,7 @@
         else { $header .= '<li><a href="about">About</a></li>'; }
       $header .= '</ul>';
       //Time of last TfL Data Update
-      $header .= '<p class="navbar-text navbar-right">Updated at ' . date('H:i:s', filemtime(tflcache)) . " (" . date('T') . ")" . '</p>';
+      $header .= '<p class="navbar-text navbar-right">Updated at ' . date('H:i:s', filemtime(TFLCACHE)) . " (" . date('T') . ")" . '</p>';
       //End Collapseable Menu 
       $header .= '</div><!--/.nav-collapse -->';
       $header .= '</div></div>';       
