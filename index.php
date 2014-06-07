@@ -1,55 +1,17 @@
 <?php
+   define('IN_APP', true);
+   require_once('inc/functions.php');
+   require_once('inc/menu.php');
+   session_start();
+   
    ini_set('session.cookie_httponly',1);
+   $activepage='home';
    
-   $url= "http://cloud.tfl.gov.uk/TrackerNet/LineStatus";
-   $lines = array();
-   $linescookie = array();
-   $tflcache = 'tflcache.xml.cache';
-   $tflcacheage = 30; //in seconds
+   jtflcheckforcookie();   
    
-   if (isset($_COOKIE['tubelines'])) {
-       $linescookie = explode(',', filter_input(INPUT_COOKIE, 'tubelines', FILTER_SANITIZE_STRING));
-       $cookieset = true;
-   } else {
-       $cookieset = false;
-   }
+   $xml = jtflcache();
 
-   if(!file_exists($tflcache) || time() - filemtime($tflcache) > $tflcacheage) {
-        $contents = file_get_contents($url);
-        file_put_contents($tflcache, $contents);
-        $xml = simplexml_load_file($tflcache);
-        clearstatcache(); 
-    } else {
-        $xml = simplexml_load_file($tflcache);
-    }
-
-    if ($cookieset) {
-    if ($xml->LineStatus && $xml->LineStatus->Line){
-        foreach ($xml->LineStatus as $row){
-            if(in_array($row->Line['Name'], $linescookie)){
-                $lines[(int)$row->Line['ID']] = array(
-                'id' => (int)$row->Line['ID'],
-                'name' => (string)$row->Line['Name'],
-                'state' => (string)$row->Status['Description'],
-                'cssclass' => (string)$row->Status['CssClass'],
-                'details' => (string)$row['StatusDetails'],
-            );
-          }
-        }  
-      }
-    } else {
-        if ($xml->LineStatus && $xml->LineStatus->Line){
-            foreach ($xml->LineStatus as $row){
-                $lines[(int)$row->Line['ID']] = array(
-                'id' => (int)$row->Line['ID'],
-                'name' => (string)$row->Line['Name'],
-                'state' => (string)$row->Status['Description'],
-                'cssclass' => (string)$row->Status['CssClass'],
-                'details' => (string)$row['StatusDetails'],
-                );
-            }  
-        }    
-    }
+   $lines = jtflreaddata($xml,true);
    
 ?>
 
@@ -66,7 +28,8 @@
         <link rel="image_src" href="img/icon_orange.png" />
         <link rel="canonical" href="http://www.journeychecker.com/">
         
-        <!-- Bootstrap core CSS -->
+        <!-- Bootstrap CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
         <title>Journey Checker</title>
         
@@ -78,35 +41,16 @@
     </head>
     <body style="padding-top:50px">
         
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-            <div class="navbar-form" style="margin-top:0px; margin-bottom: 3.5px; padding-left:0px; padding-right:0px"><a class="navbar-left" href="/"><img src="img/icon_orange.png" style="height:45px; padding:5px" alt="Journey Checker"></a>
-                <a class="navbar-brand" href="/"> Journey Checker</a></div>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="preferences">Preferences</a></li>
-            <!--<li><a href="tube-map">Tube Map</a></li>-->
-            <li><a href="about">About</a></li>
-          </ul>
-          <p class="navbar-text navbar-right">Updated at <?php PRINT date('H:i:s', filemtime($tflcache)) . " (" . date('T') . ")" ?></p>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+    <?php
+        $navbar = jgetmenu($activepage);
+        print $navbar;
+    ?>
         
     <div class="container theme-showcase" role="main">   
      
     <div class="jumbotron">
         <?php 
-        if ($cookieset == FALSE){
+        if ($_SESSION['tflcookieset'] == FALSE){
         ?>
         <div>
             <div class="alert alert-warning fade in">
@@ -142,12 +86,6 @@
     <strong>Note: </strong>If there is a disruption the affected lines will turn red and details of the disruption will be provided</p>
     </div>
     
-    <div class="pull-right text-muted">
-        <p class="text-right">&copy; <?php echo date("Y"); ?> Journey Checker | All Rights Reserved | Powered by TfL Open Data</p>
-    </div>
-    
-    </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-    </body>
-</html>
+<?php
+    include 'inc/footer.html'
+?>
