@@ -13,7 +13,7 @@
         setcookie('tubelines', null, -1, '/');
         session_unset();
         session_destroy();
-        header('Location: index.php');
+        header('Location: /');
         exit;
     }
     
@@ -21,19 +21,11 @@
         $linesselected = (filter_input(INPUT_POST, 'line', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY));
         $tubelines = implode(',', $linesselected);
         setcookie("tubelines", $tubelines, $expire, "/", "", 0, true);
-        header('Location: index.php');
+        header('Location: /');
         exit;
     }
     
-       if(!file_exists(TFLCACHE) || time() - filemtime(TFLCACHE) > TFLCACHEAGE) {
-        $contents = file_get_contents(TFL_URL);
-        file_put_contents(TFLCACHE, $contents);
-        $xml = simplexml_load_file(TFLCACHE);
-        clearstatcache(); 
-    } else {
-        $xml = simplexml_load_file(TFLCACHE);
-    }
-
+    $xml = jtflcache();
     
 ?>
 
@@ -76,17 +68,8 @@
         <div class="well">
 <?php
         
-    if ($xml->LineStatus && $xml->LineStatus->Line){
-        foreach ($xml->LineStatus as $row){
-            $lines[(int)$row->Line['ID']] = array(
-            'id' => (int)$row->Line['ID'],
-            'name' => (string)$row->Line['Name'],
-            'state' => (string)$row->Status['Description'],
-            'cssclass' => (string)$row->Status['CssClass'],
-            'details' => (string)$row['StatusDetails'],
-            );
-        }  
-    }
+    $lines = jtflreaddata($xml,false);
+    
 ?>
         <div class="container">
           <form class="form-preferences" role="form" method="post" action="preferences.php">
