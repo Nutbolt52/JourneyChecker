@@ -6,23 +6,14 @@
     
     ini_set('session.cookie_httponly',1);
     $activepage='pref';
-    
-    $expire=time()+60*60*24*30;
 
     if(isset($_GET['delete'])) {
-        setcookie('tubelines', null, -1, '/');
-        session_unset();
-        session_destroy();
-        header('Location: /');
-        exit;
+        jtfldeletecookie();
     }
     
     if (isset($_POST['line'])) {
-        $linesselected = (filter_input(INPUT_POST, 'line', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY));
-        $tubelines = implode(',', $linesselected);
-        setcookie("tubelines", $tubelines, $expire, "/", "", 0, true);
-        header('Location: /');
-        exit;
+        $linepreferences = (filter_input(INPUT_POST, 'line', FILTER_SANITIZE_STRING, FILTER_REQUIRE_ARRAY));
+        jtflsetcookie($linepreferences);
     }
     
     $xml = jtflcache();

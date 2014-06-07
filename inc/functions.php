@@ -59,6 +59,24 @@
         return $lines;
     }
     
+    //Delete TfL Cookie
+    function jtfldeletecookie () {
+        setcookie('tubelines', null, -1, '/');
+        session_unset();
+        session_destroy();
+        header('Location: /');
+        exit;
+    }
+    
+    //Set TfL Cookie
+    function jtflsetcookie ($lines) {
+        $expire=time()+60*60*24*30;
+        $tubelines = implode(',', $lines);
+        setcookie("tubelines", $tubelines, $expire, "/", "", 0, true);
+        header('Location: /');
+        exit;
+    }
+    
   //Need the following functions:
   //jgetmenu 
   //jsetcookie
