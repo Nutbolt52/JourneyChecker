@@ -61,24 +61,13 @@
         </div>
         <?php } ?>
         
-        <p>  
-        <?php
-        foreach ($lines as $line) {
-        ?>
-            <div class="panel <?php if ($line['cssclass']== 'GoodService' ) {print "panel-success";} else {print "panel-danger";} ?>">
-            <div class="panel-heading"><h3 class="panel-title">     
-        <?php print $line['name'];?> </h3></div>
-            <div class="panel-body">  
-        <?php
-            print "<b>Tube Status: </b>" . $line['state'];
-            if ($line['details'] !== '') {
-                print "<br><b>Details: </b>" . $line['details'];
-            }
-            echo "</div></div>";
-        }
-        ?>
-       
+        <p>         
+        <?php 
+            $tfldisplaylines = jtflprintlines($lines);
+            print $tfldisplaylines;
+        ?>    
         </p>
+        
     </div><!-- /.container -->
     
     <?php 

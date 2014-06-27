@@ -85,5 +85,26 @@
         setcookie("tubelines", $tubelines, $expire, "/", "", 0, true);
     }
     
+    //Create array to display out tfl lines
+    function jtflprintlines ($lines) {
+    
+        $tfldisplaylines = '';
+        foreach ($lines as $line) { 
+            $tfldisplaylines.= '<div class="panel '; if ($line['cssclass']== 'GoodService' ) {$tfldisplaylines.='panel-success';} else {$tfldisplaylines.='panel-danger';} $tfldisplaylines.='">' ;
+            $tfldisplaylines.= '<div class="panel-heading"><h3 class="panel-title">';     
+            $tfldisplaylines.= $line['name'] . '</h3></div>'; 
+            $tfldisplaylines.= '<div class="panel-body">';   
+
+            $tfldisplaylines.='<b>Tube Status: </b>' . $line['state'];
+            if ($line['details'] !== '') {
+                $tfldisplaylines.= '<br><b>Details: </b>' . $line['details'];
+            }
+            $tfldisplaylines.= '</div></div>';
+        }
+
+        return $tfldisplaylines;   
+    }
+    
+    
     
 ?>
