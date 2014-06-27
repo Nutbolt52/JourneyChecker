@@ -8,6 +8,7 @@
         if (isset($_COOKIE['tubelines'])) {
             $_SESSION['tfl_lines'] = explode(',', filter_input(INPUT_COOKIE, 'tubelines', FILTER_SANITIZE_STRING));
             $_SESSION['tflcookieset'] = true;
+            jtflcookieupdate();
         } else {
             $_SESSION['tflcookieset'] = false;
         }
@@ -77,13 +78,12 @@
         exit;
     }
     
-  //Need the following functions:
-  //jgetmenu 
-  //jsetcookie
-  //jgetcookie
-  //jgettfldata
-  //jcachetfldata
-  //etc...
-  
-
+    //Recreate the TfL Cookie so it doesn't expire
+    function jtflcookieupdate () { 
+        $expire=time()+60*60*24*30;
+        $tubelines = implode(',', $_SESSION['tfl_lines']);
+        setcookie("tubelines", $tubelines, $expire, "/", "", 0, true);
+    }
+    
+    
 ?>
