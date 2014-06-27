@@ -49,7 +49,7 @@
      
     <div class="jumbotron">
         <?php 
-        if ($_SESSION['tflcookieset'] == FALSE){
+            if ($_SESSION['tflcookieset'] == FALSE){
         ?>
         <div>
             <div class="alert alert-warning fade in">
@@ -81,9 +81,13 @@
         </p>
     </div><!-- /.container -->
     
+    <?php 
+        if ($_SESSION['tflcookieset'] == FALSE){
+    ?>
     <div class="alert alert-warning">
     <strong>Note: </strong>If there is a disruption the affected lines will turn red and details of the disruption will be provided</p>
     </div>
+    <?php } ?>
     
 <?php
     include 'inc/footer.html'
