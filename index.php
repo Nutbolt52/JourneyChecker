@@ -9,10 +9,6 @@
    
    jtflcheckforcookie();   
    
-   $xml = jtflcache();
-
-   $lines = jtflreaddata($xml,true);
-   
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +59,7 @@
 
         <p>
             <div id="TfLlines">          
-                <div style="text-align:center"><img src="img/ajax-loader.gif" /></div>
+                <div id="ajaxloader" style="text-align:center; display:none"><img src="img/ajax-loader.gif" /></div>
             </div>
         
             <div id="TfLlineserror">
@@ -82,6 +78,9 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
+        $(window).load(function (){
+            $("#ajaxloader").fadeIn("slow");
+        });
         $( "#TfLlines" ).load( "/ajax/tfllines.php", function( response, status, xhr ) {
             if ( status == "error" ) {
                 var msg = "Sorry but there was an error: ";

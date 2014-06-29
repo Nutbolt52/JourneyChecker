@@ -5,7 +5,7 @@
 
     $xml = jtflcache();
     $lines = jtflreaddata($xml,true);
-    
+
     $tfldisplaylines = jtflprintlines($lines);
     print $tfldisplaylines;
     
