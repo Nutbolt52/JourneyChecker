@@ -1,7 +1,7 @@
 <?php 
   defined('IN_APP') || die("Hands off!");
-  require_once('config.php');
-  require_once('inc/menu.php');
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/config.php');
+  require_once($_SERVER['DOCUMENT_ROOT'] . '/inc/menu.php');
   
     //Check if the TfL Cookie is set and if so put the chosen tube lines in the users session
     function jtflcheckforcookie () {

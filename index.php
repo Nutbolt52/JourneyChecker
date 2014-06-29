@@ -60,14 +60,16 @@
             </div>
         </div>
         <?php } ?>
+
+        <p>
+            <div id="TfLlines">          
+                <div style="text-align:center"><img src="img/ajax-loader.gif" /></div>
+            </div>
         
-        <p>         
-        <?php 
-            $tfldisplaylines = jtflprintlines($lines);
-            print $tfldisplaylines;
-        ?>    
+            <div id="TfLlineserror">
+            
+            </div>
         </p>
-        
     </div><!-- /.container -->
     
     <?php 
@@ -77,6 +79,16 @@
     <strong>Note: </strong>If there is a disruption the affected lines will turn red and details of the disruption will be provided</p>
     </div>
     <?php } ?>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $( "#TfLlines" ).load( "/ajax/tfllines.php", function( response, status, xhr ) {
+            if ( status == "error" ) {
+                var msg = "Sorry but there was an error: ";
+                $( "#TfLlineserror" ).html( msg + xhr.status + " " + xhr.statusText );
+            }
+        });
+    </script>
     
 <?php
     include 'inc/footer.html'
