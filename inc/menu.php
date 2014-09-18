@@ -22,8 +22,7 @@
         else { $header .= '<li><a href="about">About</a></li>'; }
       $header .= '</ul>';
       //Time of last TfL Data Update
-      date_default_timezone_set('Europe/London');
-      $header .= '<p class="navbar-text navbar-right">Updated at ' . date('H:i:s', filemtime(TFLCACHE)) . " (" . date('T') . ")" . '</p>';
+      $header .= '<p class="navbar-text navbar-right" id="lastupdate"></p><p class="navbar-text navbar-right" id="lastupdateerror"></p>';
       //End Collapseable Menu 
       $header .= '</div><!--/.nav-collapse -->';
       $header .= '</div></div>';       
