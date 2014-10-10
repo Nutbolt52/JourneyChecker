@@ -1,0 +1,13 @@
+Options +FollowSymLinks
+RewriteEngine on
+
+#redirect from journeychecker.com to www.journeychecker.com
+RewriteCond %{HTTP_HOST} ^journeychecker.com [NC]
+RewriteRule ^(.*)$ http://www.journeychecker.com/$1 [L,R=301]
+
+#Remove .php in urls
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+#Block viewing indexes
+Options -Indexes 
