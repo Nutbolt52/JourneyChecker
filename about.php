@@ -20,7 +20,9 @@
         
         <!-- Bootstrap CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
+        <link href="css/ripples.min.css" rel="stylesheet">
+        <link href="css/material-custom.css" rel="stylesheet">
+        
         <title>Journey Checker - About</title>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

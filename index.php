@@ -25,7 +25,9 @@
         
         <!-- Bootstrap CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
+        <link href="css/ripples.min.css" rel="stylesheet">
+        <link href="css/material-custom.css" rel="stylesheet">
+        
         <title>Journey Checker</title>
         
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -34,7 +36,7 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body style="padding-top:50px">
+    <body style="padding-top:70px">
         
     <?php
         $navbar = jgetmenu($activepage);
@@ -48,11 +50,11 @@
             if ($_SESSION['tflcookieset'] == FALSE){
         ?>
         <div>
-            <div class="alert alert-warning fade in">
+            <div class="alert alert-info fade in">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <p><strong>Welcome to Journey Checker!</strong> Set your preferences to limit which lines you see below</p>
                 <h5>This website uses cookies to remember your preferences. By setting your preferences you are agreeing to allow this site to store cookies on your computer</h5>
-                <p><a class="btn btn-default" href="preferences">Set Preferences</a></p>
+                <p><a class="btn btn-warning btn-raised" href="preferences">Set Preferences</a></p>
             </div>
         </div>
         <?php } ?>
