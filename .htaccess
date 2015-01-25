@@ -2,7 +2,6 @@ Options +FollowSymLinks
 RewriteEngine on
 
 #Enforce HTTPS
-RewriteCond %{HTTP_HOST} ^journeychecker.com [NC]
 RewriteCond %{SERVER_PORT} 80 
 RewriteRule ^(.*)$ https://www.journeychecker.com/$1 [R=301,L]
 
