@@ -34,7 +34,9 @@
         
         <!-- Bootstrap CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrapcosmo.min.css" rel="stylesheet">
+        <link href="css/ripples.min.css" rel="stylesheet">
+        <link href="css/material-custom.css" rel="stylesheet">
+        
         <title>Journey Checker - Preferences</title>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -66,11 +68,13 @@
             <?php 
                 foreach ($lines as $line) {
             ?>
-            <label class="checkbox" style="margin-bottom:10px">
+              <div class="checkbox">
+            <label>
                 <input type="checkbox" value="<?php print $line['name']; ?>" name="line[]"> <?php print $line['name']; ?>
             </label>
+              </div>
             <?php } ?>
-            <button class="btn btn-primary" type="submit" name="submit">Save</button>
+            <button class="btn btn-primary btn-raised" type="submit" name="submit">Save</button>
           </form>
          </div> <!-- /container -->
         </div>
@@ -81,7 +85,7 @@
             <p>Select all the underground lines you wish to view on the front page </p>
             <p>If you wish to change your selection simply set your preferences again </p>
             <p>Preferences are saved on your computer for 30 days </p>
-            <p>To delete cookies saved on your computer click this handy button <a class="btn btn-xs btn-danger" href="?delete">Delete Preferences</a> </p>
+            <p>To delete cookies saved on your computer click this handy button <a class="btn btn-xs btn-danger btn-raised" href="?delete">Delete Preferences</a> </p>
         </div>
         
 <?php
