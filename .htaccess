@@ -1,13 +1,23 @@
 Options +FollowSymLinks
 RewriteEngine on
 
-#redirect from journeychecker.com to www.journeychecker.com
+#Enforce HTTPS
 RewriteCond %{HTTP_HOST} ^journeychecker.com [NC]
-RewriteRule ^(.*)$ http://www.journeychecker.com/$1 [L,R=301]
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://www.journeychecker.com/$1 [R=301,L]
+
+#Redirect from journeychecker.com to www.journeychecker.com
+RewriteCond %{HTTP_HOST} ^journeychecker.com [NC]
+RewriteRule ^(.*)$ https://www.journeychecker.com/$1 [R=301,L]
 
 #Remove .php in urls
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+#Enable GZIP
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
 
 #Block viewing indexes
 Options -Indexes 
