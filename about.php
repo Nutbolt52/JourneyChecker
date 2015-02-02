@@ -13,10 +13,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/ICO" href="favicon.ico">
-        <meta name="description" content="Quickly and easily see if theres any delays on your underground line(s) during your commute in London. Works great on both desktop and mobile!" />
-        <meta name="Keywords" content="Journey, Checker, commute, London, TfL, transport for london, underground, delay, disruption" />
+        <meta name="description" content="Quickly and easily see if theres any delays on your underground line(s) during your commute in London. Works great on both desktop and mobile" />
+        <meta name="keywords" content="Journey, Checker, commute, London, TfL, transport for london, underground, delay, disruption, status, check, tube" />
         <link rel="image_src" href="img/logosquare.png" />
-        <link rel="canonical" href="http://www.journeychecker.com/about">
+        <link rel="canonical" href="https://www.journeychecker.com/about">
         
         <!-- Bootstrap CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
