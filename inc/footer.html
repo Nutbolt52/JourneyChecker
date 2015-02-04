@@ -21,7 +21,7 @@
                 }
             });
             
-            setInterval('refresh_lastupdate()', 31000);
+            setInterval('refresh_lastupdate()', 32000);
             function refresh_lastupdate() {
                 $( "#lastupdate" ).load( "/ajax/lastupdate.php", function( response, status, xhr ) {
                     if ( status == "error" ) {
