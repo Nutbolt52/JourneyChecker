@@ -81,8 +81,20 @@
         <?php } ?>
 
         <p>
-            <div id="TfLlines">          
+            <div id="TfLlines">
+            <?php 
+                if ($_SESSION['tflcookieset'] == FALSE){
+                    $xml = jtflcache();
+                    $lines = jtflreaddata($xml,true);
+
+                    $tfldisplaylines = jtflprintlines($lines);
+                    print $tfldisplaylines;
+            ?>
+            <?php } else { ?>
                 <div id="ajaxloader" style="text-align:center; display:none"><img src="img/ajax-loader.gif" /></div>
+            <?php } ?>
+            
+            
             </div>
         
             <div id="TfLlineserror">
