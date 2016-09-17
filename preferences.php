@@ -21,7 +21,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,7 +37,7 @@
         <link href="css/ripples.min.css" rel="stylesheet">
         <link href="css/material-custom.css" rel="stylesheet">
         
-        <title>Journey Checker - Preferences</title>
+        <title>Preferences | Journey Checker</title>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
