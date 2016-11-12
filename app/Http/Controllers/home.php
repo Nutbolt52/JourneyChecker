@@ -22,6 +22,9 @@ class home extends Controller
             $cookiedata = $request->cookie('tubelines');
             $lines = json_decode($cookiedata);
 
+            //Put lines into session to avoid checking cookie every time
+            $request->session()->put('lines', $lines);
+
             $tfldata = tfldata::getSpecificLines($lines);
 
             //Prepare fresh cookie which will last for 30 days. This updates the cookie on every page hit to keep it fresh

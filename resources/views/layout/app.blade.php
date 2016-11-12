@@ -59,7 +59,7 @@
 <script>
     $( "#lastupdate" ).load( "/ajax/lastupdate.php", function( response, status, xhr ) {
         if ( status == "error" ) {
-            $( "#lastupdateerror" ).html("Updated at <em>unknown<em>");
+            $( "#lastupdateerror" ).html("Last Updated <em>unknown</em> seconds ago");
         }
     });
 
@@ -67,7 +67,7 @@
     function refresh_lastupdate() {
         $( "#lastupdate" ).load( "/ajax/lastupdate.php", function( response, status, xhr ) {
             if ( status == "error" ) {
-                $( "#lastupdateerror" ).html("Updated at <em>unknown<em>");
+                $( "#lastupdateerror" ).html("Last Updated <em>unknown</em> seconds ago");
             }
         });
     }
