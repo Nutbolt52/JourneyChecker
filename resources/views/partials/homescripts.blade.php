@@ -1,3 +1,8 @@
+<script src="js/vue.js"></script>
+{{--<script src="js/vue.min.js"></script>--}}
+<script src="js/axios.js"></script>
+{{--<script src="js/axios.min.js"></script>--}}
+
 <script>
     $(window).load(function (){
         $("#ajaxloader").fadeIn("slow");

@@ -14,7 +14,7 @@
                     {{ csrf_field() }}
                     @foreach($lines as $line => $line_value)
                     <div class="checkbox">
-                        <label>
+                        <label style="color:black">
                             <input type="checkbox" value="{{ $line }}" name="line_ids[]"> {{ $line_value }}
                         </label>
                     </div>
