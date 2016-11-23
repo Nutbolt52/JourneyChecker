@@ -21,6 +21,16 @@ class api extends Controller
             $tfldata = tfldata::get();
         }
 
+        //Provide the css class to use in the view
+        //All logic should be handled here for display, except for the initial view, which is handled in the blade file (partials.linestatus)
+        foreach($tfldata as $line) {
+            if($line['statusSeverity'] < 10) {
+                $tfldata[$line['id']] = array_add($line, 'cssClass', 'panel-danger');
+            } else {
+                $tfldata[$line['id']] = array_add($line, 'cssClass', 'panel-success');
+            }
+        }
+
         return $tfldata;
     }
 }
