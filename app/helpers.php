@@ -56,6 +56,8 @@ class tfldata
      */
     public static function getSpecificLines($lines)
     {
+
+        //need a try catch around this I think incase it returns blank. Or should this be handled in get()?
         $data = tfldata::get();
 
         $specific_data = [];

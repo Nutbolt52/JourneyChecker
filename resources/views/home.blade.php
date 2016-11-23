@@ -36,14 +36,15 @@
     @endunless
 
     <p>
-    <div id="TfLlines">
+    <div id="line-status">
+
+            <button v-on:click="getData">Get Fresh Data</button>
 
         <!--Javascript to load in the actual lines and their statuses. Probably use Vue for this? But for SEO want it to load first, then update...? -->
 
             @include('partials.linestatus')
 
-        <div id="ajaxloader" style="text-align:center; display:none"><img src="img/ajax-loader.gif" /></div>
-
+        {{--<div id="ajaxloader" style="text-align:center; display:none"><img src="img/ajax-loader.gif" /></div>--}}
 
     </div>
 
@@ -56,5 +57,7 @@
 <div class="alert alert-warning">
     <strong>Note: </strong>If there is a disruption the affected lines will turn red and details of the disruption will be provided</p>
 </div>
+
+    @include('partials.homescripts')
 
 @endsection
