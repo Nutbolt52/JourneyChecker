@@ -5,32 +5,41 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Cookie;
 use App\Helpers\tfldata;
+use Cache;
 
 class api extends Controller
 {
     public function updatelines(Request $request)
     {
-        if($request->session()->has('lines')) {
-            //Retrieve lines from session
-            $lines = $request->session()->get('lines');
-            //Get TFL Data for specific lines
+        $preferences_set = false;
+
+        //If preferences set via cookie do the following
+        if(Cookie::get('tubelines'))
+        {
+            $preferences_set = true;
+
+            $cookiedata = $request->cookie('tubelines');
+            $lines = json_decode($cookiedata);
+
+            //Put lines into session to avoid checking cookie every time
+            $request->session()->put('lines', $lines);
+
             $tfldata = tfldata::getSpecificLines($lines);
+
+            //Prepare fresh cookie which will last for 30 days. This updates the cookie on every page hit to keep it fresh
+            Cookie::queue('tubelines', $cookiedata, 43200);
         } else {
-            //If not set in session (i.e. no preferences set), then get data for all TFL lines
             $tfldata = tfldata::get();
         }
 
-        //Provide the css class to use in the view
-        //All logic should be handled here for display, except for the initial view, which is handled in the blade file (partials.linestatus)
-        foreach($tfldata as $line) {
-            if($line['statusSeverity'] < 10) {
-                $tfldata[$line['id']] = array_add($line, 'cssClass', 'panel-danger');
-            } else {
-                $tfldata[$line['id']] = array_add($line, 'cssClass', 'panel-success');
-            }
-        }
+        return view('partials.linestatus', compact('preferences_set', 'tfldata'));
+    }
 
-        return $tfldata;
+    public function lastupdate() {
+
+        return 'Updated at ' . Cache::get('last-update');
+
     }
 }

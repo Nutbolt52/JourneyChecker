@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use Cache;
 use Storage;
+use Carbon\Carbon;
 
 class tfldata
 {
@@ -103,6 +104,8 @@ class tfldata
             }
 
             Cache::put('tfldata', $tfldata, 0.5);
+
+            Cache::forever('last-update', Carbon::now()->toTimeString());
 
             return true;
         } catch (\Exception $e) {

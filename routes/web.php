@@ -18,3 +18,4 @@ Route::get('preferences/delete', 'preferences@DeletePreferences');
 Route::get('about', 'about@displaypage');
 
 Route::get('api/update', 'api@updatelines');
+Route::get('api/last-update', 'api@lastupdate');

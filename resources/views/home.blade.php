@@ -38,13 +38,7 @@
     <p>
     <div id="line-status">
 
-            <button v-on:click="getData">Get Fresh Data</button>
-
-        <!--Javascript to load in the actual lines and their statuses. Probably use Vue for this? But for SEO want it to load first, then update...? -->
-
             @include('partials.linestatus')
-
-        {{--<div id="ajaxloader" style="text-align:center; display:none"><img src="img/ajax-loader.gif" /></div>--}}
 
     </div>
 

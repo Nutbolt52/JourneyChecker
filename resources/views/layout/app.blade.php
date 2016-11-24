@@ -27,6 +27,9 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body style="padding-top:70px">
 
@@ -35,8 +38,6 @@
 <div class="container theme-showcase" role="main">
 
 @yield('content')
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
     @yield('scripts')
 
@@ -57,7 +58,7 @@
 </script>
 
 <script>
-    $( "#lastupdate" ).load( "/ajax/lastupdate.php", function( response, status, xhr ) {
+    $( "#lastupdate" ).load( "/api/last-update", function( response, status, xhr ) {
         if ( status == "error" ) {
             $( "#lastupdateerror" ).html("Last Updated <em>unknown</em> seconds ago");
         }
@@ -65,7 +66,7 @@
 
     setInterval('refresh_lastupdate()', 32000);
     function refresh_lastupdate() {
-        $( "#lastupdate" ).load( "/ajax/lastupdate.php", function( response, status, xhr ) {
+        $( "#lastupdate" ).load( "/api/last-update", function( response, status, xhr ) {
             if ( status == "error" ) {
                 $( "#lastupdateerror" ).html("Last Updated <em>unknown</em> seconds ago");
             }
