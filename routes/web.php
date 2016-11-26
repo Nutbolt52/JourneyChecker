@@ -16,6 +16,7 @@ Route::get('preferences', 'preferences@displaypage');
 Route::post('preferences', 'preferences@SetPreferences');
 Route::get('preferences/delete', 'preferences@DeletePreferences');
 Route::get('about', 'about@displaypage');
+Route::post('contact', 'about@contact');
 
 Route::get('api/update', 'api@updatelines');
 Route::get('api/last-update', 'api@lastupdate');

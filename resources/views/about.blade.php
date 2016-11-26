@@ -17,7 +17,56 @@
         </div>
 
     <div class="well">
-        <em><strong>Insert contact form here</strong></em>
+        <h2>Contact Us</h2>
+
+        @if(Session::has('message'))
+            <div class="alert alert-info">
+                {{Session::get('message')}}
+            </div>
+        @endif
+
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
+        {!! Form::open(['url' => 'contact']) !!}
+
+        <div class="form-group">
+            {!! Form::label('name', 'Name', ['style' => 'color:black']) !!}
+            {!! Form::text('name', null,
+                array('required',
+                      'class'=>'form-control',
+                      'placeholder'=>'Your name')) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('email', 'E-mail Address', ['style' => 'color:black']) !!}
+            {!! Form::text('email', null,
+                array('required',
+                      'class'=>'form-control',
+                      'placeholder'=>'Your e-mail address')) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('message', 'Your Message', ['style' => 'color:black']) !!}
+            {!! Form::textarea('message', null,
+                array('required',
+                      'class'=>'form-control',
+                      'placeholder'=>'Your message')) !!}
+        </div>
+
+        {!! app('captcha')->display() !!}
+
+        <div class="form-group">
+            {!! Form::submit('Contact Us!',
+              array('class'=>'btn btn-primary')) !!}
+        </div>
+
+        {!! Form::close() !!}
+
+
     </div>
 
 @endsection
