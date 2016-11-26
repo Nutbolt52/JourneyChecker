@@ -1,5 +1,11 @@
 @extends('layout.app')
 
+@section('canonical-title')
+    <link rel="canonical" href="https://www.journeychecker.com/about">
+
+    <title>About | Journey Checker</title>
+@endsection
+
 @section('content')
 
     <div class="container theme-showcase" role="main">

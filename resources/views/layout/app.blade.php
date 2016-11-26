@@ -8,7 +8,6 @@
     <meta name="description" content="Quickly and easily see if theres any delays on your underground line(s) during your commute in London. Works great on both desktop and mobile" />
     <meta name="keywords" content="Journey, Checker, commute, London, TfL, transport for london, underground, delay, disruption, status, check, tube" />
     <link rel="image_src" href="img/logosquare.png" />
-    <link rel="canonical" href="https://www.journeychecker.com/">
 
     <!-- Material Design fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
@@ -20,7 +19,7 @@
     <link href="css/bootstrap-material-design.min.css" rel="stylesheet">
     <link href="css/ripples.min.css" rel="stylesheet">
 
-    <title>Journey Checker - London Underground</title>
+    @yield('canonical-title')
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -73,12 +72,12 @@
         });
     }
 
-//    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-//                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-//            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-//    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-//    ga('create', 'UA-51517692-1', 'journeychecker.com');
-//    ga('send', 'pageview');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-51517692-1', 'journeychecker.com');
+    ga('send', 'pageview');
 </script>
 </body>
 </html>
