@@ -30,4 +30,11 @@ class ContactFormRequest extends FormRequest
             'g-recaptcha-response' => 'required|captcha',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'g-recaptcha-response.required' => 'Please prove you are not a robot',
+        ];
+    }
 }
